@@ -18,7 +18,7 @@ pipeline:
         - kind: Namespace
       configMap:
         namespace: default
-    - image: ghcr.io/kptdev/krm-functions-catalog/set-namespace:v0.4
+    - image: ghcr.io/kptdev/krm-functions-catalog/set-namespace:latest
       configMap:
         namespace: default
   validators:
