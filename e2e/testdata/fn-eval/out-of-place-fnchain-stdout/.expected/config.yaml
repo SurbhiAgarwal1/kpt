@@ -67,7 +67,6 @@ stdOut: |
         internal.config.kubernetes.io/path: resources.yaml
         internal.config.kubernetes.io/seqindent: compact
         foo: bar
-      namespace: staging
       labels:
         tier: backend
     spec:
