@@ -89,7 +89,8 @@ func GetEvalFnRunner(ctx context.Context, parent string) *EvalFnRunner {
 	})
 
 	r.Command.Flags().BoolVar(
-		&r.RunnerOptions.AllowWasm, "allow-alpha-wasm", false, "allow alpha wasm functions to be run. If true, you can specify a wasm image with --image flag or a path to a wasm file (must have the .wasm file extension) with --exec flag.")
+		&r.RunnerOptions.AllowWasm, "allow-alpha-wasm", false,
+		"allow alpha wasm functions to be run. If true, you can specify a wasm image with --image flag or a path to a wasm file (must have the .wasm file extension) with --exec flag.")
 
 	// selector flags
 	r.Command.Flags().StringVar(

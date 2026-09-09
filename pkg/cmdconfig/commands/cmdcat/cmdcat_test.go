@@ -434,7 +434,9 @@ func TestCmd_NonExistent(t *testing.T) {
 	d := t.TempDir()
 	_, err := runCat(t, filepath.Join(d, "nope.yaml"))
 	assert.Error(t, err)
-	assert.True(t, os.IsNotExist(err) || strings.Contains(err.Error(), "no such file or directory") || strings.Contains(err.Error(), "cannot find the file"), "expected file not found error")
+	isNotFound := os.IsNotExist(err) || strings.Contains(err.Error(), "no such file or directory") ||
+		strings.Contains(err.Error(), "cannot find the file")
+	assert.True(t, isNotFound, "expected file not found error")
 }
 
 // TestCmd_KptfileArgDisplayed: passing the Kptfile directly should display

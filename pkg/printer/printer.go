@@ -245,7 +245,7 @@ func (pr *printer) formatFields(extraFields ...ContextualFields) string {
 		if i > 0 {
 			sb.WriteString(" ")
 		}
-		sb.WriteString(fmt.Sprintf("%s=%s", k, strconv.Quote(combined[k])))
+		fmt.Fprintf(&sb, "%s=%s", k, strconv.Quote(combined[k]))
 	}
 	return sb.String()
 }
@@ -266,11 +266,12 @@ func (pr *printer) PrintRunning(fnRef string, resourceCount int) {
 	}
 	attrStr := pr.formatFields(extra)
 
-	if attrStr != "" {
+	switch {
+	case attrStr != "":
 		pr.printInternal("[RUNNING] %s\n", attrStr)
-	} else if resourceCount > 0 {
+	case resourceCount > 0:
 		pr.printInternal("[RUNNING] %s on %d resource(s)\n", strconv.Quote(fnRef), resourceCount)
-	} else {
+	default:
 		pr.printInternal("[RUNNING] %s\n", strconv.Quote(fnRef))
 	}
 }
